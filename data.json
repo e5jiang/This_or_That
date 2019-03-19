@@ -1,0 +1,53 @@
+{
+  "avatar": [
+    { "next": "",
+      "image": "../images/avatar.png",
+      "id": "avatar",
+      "class": "side_nav"
+    }
+  ],
+  "scale": [
+    { "next": "options",
+      "image": "../images/scale_right.gif",
+      "id": "scale",
+      "class": "weigh_options"
+    }
+  ],
+  "profile": [
+    { "next": "profile",
+      "image": "",
+      "id": "",
+      "class": "profile_link" 
+    }
+  ],
+  "login": [
+    { "next": ".",
+      "image": "../images/login_scale.png",
+      "id": "",
+      "class": "login" 
+    }
+  ],
+  "stress": [
+    { "next": "tips",
+      "image": "",
+      "id": "tips_button",
+      "class": "stress_tips" 
+    }
+  ],
+  "help": [
+    { "next": "help",
+      "image": "../images/question.png",
+      "id": "",
+      "class": "img" 
+    }
+  ],
+  "list":[
+
+  ],
+  "options": [
+      
+  ],
+  "history": [
+
+  ]
+}

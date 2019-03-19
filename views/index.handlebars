@@ -1,0 +1,176 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>Home</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/app_style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+    <div class="container">
+	{{#each avatar}}
+			<div class="top_title" align="center" style="padding-top: 10%">
+				<div onclick="openNav()" style="float: left">
+					<img src="{{image}}" alt="Avatar" class="img" height="30" width="30">
+				</div>
+				<div class="app_title">
+					<img src="../images/title.png" alt="title" class="img" height="auto" width="200">
+				</div>
+			</div>
+
+			<div id="{{id}}" class="{{class}}">
+  				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href=".">Home</a>
+  				<a href="profile">Profile</a>
+  				<a href="history">History</a>
+				<a href="tips">Stress Relief Tips</a>  
+				<a href="login">Logout</a>
+			</div>
+		{{/each}}
+
+		<div class="text_center" align="center" style="padding-top: 10%">
+			<img id= "scale_pic" src="../images/scale.png" alt="scale pic" class="img" style="width: 100%; height: auto">
+			<img id= "scale_gif" src="../images/scale_right.gif" alt="scale gif" class="img" style="width: 100%; height: auto; display: none;">
+
+			<form id="addOptionsForm" role="form" method="get" action="/add_options"  style="padding-top: 10%">
+				<div class="form-group">
+				{{#if list.length}}
+					<div class="option_text">
+    					<input type="text" class="form-control" id="option1" placeholder="Option 1" name="option1" data-toggle="collapse" data-target="#option1-menu"/>
+					</div>
+				{{else}}
+					<p>Please fill out the profile page before inputting options!</p>
+					<div class="option_text">
+    					<input type="text" class="form-control" id="option1" placeholder="Option 1" name="option1" disabled>
+					</div>
+				{{/if}}
+				<div id="option1-menu" class="collapse">
+    			<div class="dropdown" style="color:white">
+					What kind of task is this?
+  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    					Dropdown
+    					<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+    					{{#each list}}
+							<li><a href="#">{{type}}</a></li>
+						{{/each}}
+  					</ul>
+				</div>
+
+				<div style="padding-top: 10%; color: white">
+					<form>
+  						Due Date:
+  						<input type="date">
+					</form>
+				</div>
+
+					<div class="slidecontainer" style="padding-top: 10%; color: white">
+						<p>How much is the workload for this task? (Low to high)</p>
+  						<input type="range" min="1" max="5" value="1" class="slider" id="work_slider_one">
+					  	<p>Value: <span id="work_value_one"></span></p>
+					</div>
+
+					<div class="slidecontainer" style="padding-top: 10%; color: white">
+						<p>How quickly can you finish this task? (Slow to fast)</p>
+  						<input type="range" min="1" max="5" value="1" class="slider" id="quick_slider_one">
+					  	<p>Value: <span id="quick_value_one"></span></p>
+					</div>
+
+					<div class="slidecontainer" style="padding-top: 10%; color: white">
+						<p>How much does completing this task inpact your future plans? (small to large impact)</p>
+  						<input type="range" min="1" max="5" value="1" class="slider" id="future_slider_one">
+					  	<p>Value: <span id="future_value_one"></span></p>
+					</div>
+					
+					<div class="save_close">
+						<button type="button" class="btn btn-success" id="save_option1" data-toggle="collapse" data-target="#option1-menu">Save</button>
+						<button type="button" class="close" aria-label="Close" style="float: right" data-toggle="collapse" data-target="#option1-menu">
+  							<span aria-hidden="true" style="height:5px;width:5px">&times;</span>
+						</button>
+					</div>
+  				</div>
+				{{#if list.length}}
+					<div class="option_text" style="padding-top: 5%">
+    					<input type="text" class="form-control" id="option2" placeholder="Option 2" name="option2" data-toggle="collapse" data-target="#option2-menu"/>
+					</div>
+				{{else}}
+					<div class="option_text" style="padding-top: 5%">
+    					<input type="text" class="form-control" id="option2" placeholder="Option 2" name="option2" disabled>
+					</div>
+				{{/if}}
+				<div id="option2-menu" class="collapse">
+    			<div class="dropdown" style="color:white">
+					What kind of task is this?
+  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    					Dropdown
+    					<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    					{{#each list}}
+							<li><a href="#">{{type}}</a></li>
+						{{/each}}
+  					</ul>
+				</div>
+
+				<div style="padding-top: 10%; color:white">
+					<form>
+  						Due Date:
+  						<input type="date">
+					</form>
+				</div>
+				
+					<div class="slidecontainer" style="padding-top: 10%; color: white">
+						<p>How much is the workload for this task? (Low to high)</p>
+  						<input type="range" min="1" max="5" value="1" class="slider" id="work_slider_two">
+					  	<p>Value: <span id="work_value_two"></span></p>
+					</div>
+
+					<div class="slidecontainer" style="padding-top: 10%; color: white">
+						<p>How quickly can you finish this task? (Slow to fast)</p>
+  						<input type="range" min="1" max="5" value="1" class="slider" id="quick_slider_two">
+					  	<p>Value: <span id="quick_value_two"></span></p>
+					</div>
+
+					<div class="slidecontainer" style="padding-top: 10%; color: white">
+						<p>How much does completing this task inpact your future plans? (small to large impact)</p>
+  						<input type="range" min="1" max="5" value="1" class="slider" id="future_slider_two">
+					  	<p>Value: <span id="future_value_two"></span></p>
+					</div>
+					
+					<div class="save_close">
+						<button type="button" class="btn btn-success" id="save_option2"  data-toggle="collapse" data-target="#option2-menu">Save</button>
+						<button type="button" class="close" aria-label="Close" style="float: right" data-toggle="collapse" data-target="#option2-menu">
+  							<span aria-hidden="true" style="height:5px;width:5px">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<div class="text-center" style="padding-top: 10px">
+					<div class="submit_options">
+						<button class="btn btn-primary" id="weigh_options" disabled="disabled">Weigh my options!</button>
+					</div>
+				</div>
+				</div>
+			</form>
+
+
+			<div style="padding-top: 10%">
+				<a href="help">
+				<img id= "help_pic" src="../images/question.png" alt="help" class="img" style="width:20px; height: 20px; float: left">
+				</a>
+				<form id="resetOptionsForm" role="form" method="get" action="/resetOptions" style="float: right">
+					<input type="submit" class="btn btn-dark" id="reset_options" value="Reset">
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/options_code.js"></script>
+</body>
+</html>
